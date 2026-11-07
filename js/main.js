@@ -13,6 +13,14 @@
     if (i > 0) el.style.setProperty('--d', Math.min(i * 0.08, 0.4) + 's');
   });
 
+  // ヒーローは最初の画面なので、スクロールを待たずに順番に表示する
+  var heroItems = document.querySelectorAll('.hero [data-reveal]');
+  heroItems.forEach(function (el, i) {
+    el.style.setProperty('--d', (0.1 + i * 0.08).toFixed(2) + 's');
+    requestAnimationFrame(function () { el.classList.add('is-in'); });
+  });
+  items = Array.prototype.filter.call(items, function (el) { return !el.closest('.hero'); });
+
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(function (el) { el.classList.add('is-in'); });
   } else {

@@ -184,10 +184,10 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
           mask-image: radial-gradient(ellipse 80% 70% at 70% 40%, #000 20%, transparent 75%);
   pointer-events: none;
 }
-.hero__grid { position: relative; display: grid; gap: 40px; align-items: center; }
-@media (min-width: 960px) {
-  .hero__grid { grid-template-columns: 1.15fr .85fr; gap: 40px; }
-  .hero__title { font-size: clamp(2.5rem, 3.6vw, 3.1rem); }
+.hero__grid { position: relative; display: grid; gap: 36px; align-items: center; }
+@media (min-width: 1000px) {
+  .hero__grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 44px; }
+  .hero__title { font-size: clamp(2.4rem, 3.1vw, 2.9rem); }
 }
 .hero__name {
   display: flex;
@@ -227,49 +227,43 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 }
 .hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
 
-.hero__visual { width: 100%; max-width: 540px; justify-self: center; }
+/* ヒーローのイラスト（横長2:1）
+   スマホ：ページ最上部に画面幅いっぱいで置き、その下に文案
+   タブレット：文案の上に角丸で置く
+   PC：右カラムに置き、画面の右端まで裁ち落とす */
+.hero__visual { margin-inline: calc(-1 * var(--gutter)); }
+@media (max-width: 999px) { .hero__visual { order: -1; } }
+.hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  background: #F4E9D3;
+}
 .hero__text, .hero__visual { will-change: transform; }
-@media (max-width: 959px) {
-  .hero { min-height: auto; padding: 100px 0 40px; }
-  .hero__visual { max-width: 440px; margin-inline: auto; }
+@media (min-width: 640px) and (max-width: 999px) {
+  .hero__visual { margin-inline: 0; }
+  .hero__img { border-radius: 24px; box-shadow: var(--shadow); }
 }
-
-/* ヒーローの図（抽象的なデスクの風景） */
-.scene__blob { fill: var(--paper-3); opacity: .7; }
-.scene__sun  { fill: var(--accent-3); opacity: .7; }
-.scene .sc-card { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
-.scene .sc-card--out { stroke: var(--accent); }
-.scene .sc-cal-head { fill: var(--ink); }
-.scene .sc-cal-title { fill: var(--paper); font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .2em; }
-.scene .sc-cal-cells rect { fill: var(--paper-2); }
-.scene .sc-cal-mark { fill: none; stroke: var(--accent); stroke-width: 2.4; }
-.scene .sc-grid { stroke: var(--line); stroke-width: 1.2; fill: none; }
-.scene .sc-marks circle { fill: var(--ink-3); opacity: .55; }
-.scene .sc-marks path { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linecap: round; opacity: .6; }
-.scene__flow { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 7; stroke-linecap: round; }
-.scene__dot { fill: var(--accent); }
-.scene .sc-ok { fill: var(--accent); }
-.scene .sc-check { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.scene .sc-chip-text { font-family: var(--font-display); font-weight: 700; font-size: 15px; fill: var(--ink); letter-spacing: .04em; }
-.scene .sc-label { font-family: var(--font-display); font-weight: 700; font-size: 14px; fill: var(--ink-2); letter-spacing: .1em; }
-.scene__cal { transform-box: fill-box; transform-origin: center; transform: rotate(-4deg); }
-
+@media (min-width: 1000px) {
+  .hero__visual {
+    margin-inline: 0;
+    margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--maxw)) / 2)));
+  }
+  .hero__img { border-radius: 28px 0 0 28px; box-shadow: var(--shadow); }
+}
+@media (max-width: 639px) {
+  .hero { min-height: auto; padding: 0 0 56px; }
+  .hero__grid { gap: 28px; }
+}
+@media (min-width: 640px) and (max-width: 999px) {
+  .hero { min-height: auto; padding: 84px 0 64px; }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .scene__blob  { animation: fade 1.2s var(--ease) both; }
-  .scene__cal   { animation: rise-cal 1s var(--ease) .15s both; }
-  .scene__sheet { animation: rise 1s var(--ease) .35s both; }
-  .scene__flow  { animation: draw 1.3s var(--ease) .9s both; }
-  .sc-chip { animation: rise .9s var(--ease) both, float 6s ease-in-out infinite; }
-  .sc-chip:nth-child(1) { animation-delay: 1.3s, 2.2s; }
-  .sc-chip:nth-child(2) { animation-delay: 1.45s, 3.2s; }
-  .sc-chip:nth-child(3) { animation-delay: 1.6s, 4.2s; }
-  .scene .sc-label, .scene__dot { animation: fade .8s var(--ease) 1.9s both; }
+  .hero__img { animation: hero-in 1.4s var(--ease) .25s both; }
 }
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-@keyframes rise-cal { from { opacity: 0; transform: translateY(10px) rotate(-4deg); } to { opacity: 1; transform: rotate(-4deg); } }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@keyframes draw { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
-@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-in { from { opacity: 0; transform: scale(1.025); } to { opacity: 1; transform: none; } }
 
 /* ---------- 安心材料の帯 ---------- */
 .assure-band { border-block: 1px solid var(--line); background: var(--card); }
@@ -517,5 +511,4 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
-  .scene__dot { display: none; }
 }
