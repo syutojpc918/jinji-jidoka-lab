@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ジンジの自動化ラボ｜現役人事 × GAS自動化</title>
+<meta name="description" content="月末の勤怠集計、その手作業をまるごと自動化します。人事の現場で実際に作って使ってきた仕組みを、中小企業向けに提供しています。">
+<meta name="theme-color" content="#F5F1E8">
+<link rel="canonical" href="https://syutojpc918.github.io/jinji-jidoka-lab/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ジンジの自動化ラボ">
+<meta property="og:title" content="ジンジの自動化ラボ｜現役人事 × GAS自動化">
+<meta property="og:description" content="月末の勤怠集計、その手作業をまるごと自動化します。人事の現場で実際に作って使ってきた仕組みを、中小企業向けに提供しています。">
+<meta property="og:url" content="https://syutojpc918.github.io/jinji-jidoka-lab/">
+<meta property="og:image" content="https://syutojpc918.github.io/jinji-jidoka-lab/assets/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ジンジの自動化ラボ｜月末の勤怠集計、その手作業をまるごと自動化します。">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="site-header__inner">
+    <a class="brand" href="#top" aria-label="ジンジの自動化ラボ トップへ">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="9"/><path d="M10 16.5l4 4 8-9"/></svg>
+      <span class="brand__name">ジンジの自動化ラボ</span>
+    </a>
+    <nav class="site-nav" aria-label="ページ内リンク">
+      <a href="#service">サービスと料金</a>
+      <a href="#flow">進め方</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ① ヒーロー -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="hero__name" data-reveal>ジンジの自動化ラボ</p>
+        <p class="hero__tag" data-reveal>現役人事 × GAS自動化</p>
+        <h1 class="hero__title" id="hero-title" data-reveal>
+          <span>月末の勤怠集計、</span><span>その手作業を</span><span>まるごと自動化します。</span>
+        </h1>
+        <p class="hero__lead" data-reveal>人事の現場で実際に作って使ってきた仕組みを、<wbr>中小企業向けに提供しています。</p>
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--primary" href="#service">サービスを見る</a>
+          <a class="btn btn--ghost" href="#diagnosis">無料診断について</a>
+        </div>
+      </div>
+
+      <figure class="hero__visual" aria-hidden="true">
+        <svg viewBox="0 0 440 360" class="schema">
+          <!-- 手作業のシート -->
+          <g class="schema__sheet">
+            <rect x="14" y="40" width="168" height="208" rx="14" class="s-paper"/>
+            <g class="s-grid">
+              <path d="M14 82h168M14 124h168M14 166h168M14 208h168M70 40v208M126 40v208"/>
+            </g>
+            <g class="s-marks">
+              <circle cx="42" cy="103" r="5"/><circle cx="98" cy="145" r="5"/><circle cx="154" cy="103" r="5"/>
+              <circle cx="42" cy="187" r="5"/><circle cx="154" cy="229" r="5"/><circle cx="98" cy="61" r="5"/>
+              <path class="s-scribble" d="M84 190c6-6 12 6 18 0s12 6 18 0"/>
+              <path class="s-scribble" d="M30 228c6-6 12 6 18 0s12 6 18 0"/>
+            </g>
+          </g>
+          <!-- 流れ -->
+          <path class="schema__flow" d="M190 144 C 240 144, 236 92, 282 92"/>
+          <path class="schema__flow schema__flow--2" d="M190 156 C 244 156, 236 214, 282 214"/>
+          <circle class="schema__dot" r="5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M190 144 C 240 144, 236 92, 282 92"/></circle>
+          <circle class="schema__dot" r="5"><animateMotion dur="3.6s" begin="1.8s" repeatCount="indefinite" path="M190 156 C 244 156, 236 214, 282 214"/></circle>
+          <!-- 整った出力 -->
+          <g class="schema__out">
+            <rect x="288" y="56" width="138" height="74" rx="14" class="s-card"/>
+            <path class="s-line" d="M306 82h64M306 104h96"/>
+            <circle cx="404" cy="82" r="9" class="s-ok"/>
+            <path class="s-check" d="M399.5 82.5l3 3 6-6.5"/>
+            <rect x="288" y="178" width="138" height="74" rx="14" class="s-card"/>
+            <g class="s-bars"><rect x="306" y="214" width="14" height="22" rx="3"/><rect x="328" y="204" width="14" height="32" rx="3"/><rect x="350" y="210" width="14" height="26" rx="3"/><rect x="372" y="198" width="14" height="38" rx="3"/></g>
+          </g>
+          <text x="98" y="282" class="s-label" text-anchor="middle">いまの手作業</text>
+          <text x="357" y="282" class="s-label" text-anchor="middle">自動で整う</text>
+        </svg>
+      </figure>
+    </div>
+    <a class="hero__scroll" href="#worries" aria-label="次のセクションへ"><span></span></a>
+  </section>
+
+  <!-- ② こんな困りごと向けです -->
+  <section class="section" id="worries" aria-labelledby="worries-title">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <p class="section__no">01</p>
+        <h2 class="section__title" id="worries-title">こんな困りごと向けです</h2>
+      </header>
+      <ul class="worries">
+        <li class="worry" data-reveal><span class="worry__box" aria-hidden="true"></span>月末の勤怠集計に、毎回何時間もかかっている</li>
+        <li class="worry" data-reveal><span class="worry__box" aria-hidden="true"></span>シフトの連絡や確認が、担当者の手作業になっている</li>
+        <li class="worry" data-reveal><span class="worry__box" aria-hidden="true"></span>打刻漏れのチェックを目視でやっている</li>
+        <li class="worry" data-reveal><span class="worry__box" aria-hidden="true"></span>人事まわりの「小さいけど面倒な作業」が積み重なっている</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ③ 実績 -->
+  <section class="section section--tint" id="works" aria-labelledby="works-title">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <p class="section__no">02</p>
+        <h2 class="section__title" id="works-title">実績<small>（匿名化済み）</small></h2>
+      </header>
+      <ol class="works">
+        <li class="work" data-reveal>
+          <h3 class="work__title">勤怠集計の自動化</h3>
+          <p class="work__body">勤怠システムのデータをAPIで取得し、勤務日数・労働時間・残業を自動計算。給与計算に渡す形まで一括出力</p>
+        </li>
+        <li class="work" data-reveal>
+          <h3 class="work__title">シフト通知の自動配信</h3>
+          <p class="work__body">シフト表からその日の出勤者だけを抜き出し、決まった時刻にLINEへ自動送信</p>
+        </li>
+        <li class="work" data-reveal>
+          <h3 class="work__title">打刻漏れチェック</h3>
+          <p class="work__body">週2回、打刻が漏れている人だけを自動でリスト化し、声かけ漏れを防止</p>
+        </li>
+        <li class="work" data-reveal>
+          <h3 class="work__title">採用SNS画像の自動生成</h3>
+          <p class="work__body">テンプレ画像に文言を流し込み、投稿画像を自動で作成</p>
+        </li>
+        <li class="work" data-reveal>
+          <h3 class="work__title">交通費集計</h3>
+          <p class="work__body">フォーム申請をシートに集約し、月末に人ごとの合計を自動計算</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ④ サービスと料金 -->
+  <section class="section" id="service" aria-labelledby="service-title">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <p class="section__no">03</p>
+        <h2 class="section__title" id="service-title">サービスと料金</h2>
+      </header>
+
+      <dl class="prices">
+        <div class="price" data-reveal>
+          <dt class="price__name">業務自動化の受託</dt>
+          <dd class="price__value">¥30,000〜</dd>
+          <dd class="price__note">勤怠集計・シフト通知などのGAS自動化。範囲により見積</dd>
+        </div>
+        <div class="price" data-reveal>
+          <dt class="price__name">スポット相談</dt>
+          <dd class="price__value"><span class="price__unit">60分</span> ¥10,000</dd>
+          <dd class="price__note">採用・勤怠・評価など人事まわりの相談</dd>
+        </div>
+        <div class="price" data-reveal>
+          <dt class="price__name">保守・伴走</dt>
+          <dd class="price__value">応相談</dd>
+        </div>
+      </dl>
+
+      <div class="diagnosis" id="diagnosis" data-reveal>
+        <p class="diagnosis__label">購入前の無料診断</p>
+        <p class="diagnosis__catch">「これ自動化できる？」の段階でOK。</p>
+        <p class="diagnosis__body">作業の流れを送ってもらえれば、可否と工数・金額の目安を無料で返信</p>
+      </div>
+
+      <div class="service__foot" data-reveal>
+        <p class="service__note">※ 取引はココナラ経由</p>
+        <a class="btn btn--primary" href="https://coconala.com/users/6173656" target="_blank" rel="noopener">ココナラのプロフィール<span class="btn__ext" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 進め方 -->
+  <section class="section section--tint" id="flow" aria-labelledby="flow-title">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <p class="section__no">04</p>
+        <h2 class="section__title" id="flow-title">進め方</h2>
+      </header>
+      <ol class="flow">
+        <li class="step" data-reveal><span class="step__no">1</span><p>無料診断（ココナラのメッセージ or XのDMで今のやり方を共有）</p></li>
+        <li class="step" data-reveal><span class="step__no">2</span><p>範囲・金額・納期をこちらから提示</p></li>
+        <li class="step" data-reveal><span class="step__no">3</span><p>合意してから着手</p></li>
+        <li class="step" data-reveal><span class="step__no">4</span><p>納品（導入手順書・使い方メモつき）</p></li>
+        <li class="step" data-reveal><span class="step__no">5</span><p>納品後2週間は軽微な不具合対応を無償で実施</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ⑥ プロフィール -->
+  <section class="section" id="profile" aria-labelledby="profile-title">
+    <div class="wrap profile">
+      <header class="section__head" data-reveal>
+        <p class="section__no">05</p>
+        <h2 class="section__title" id="profile-title">プロフィール</h2>
+      </header>
+      <div class="profile__body" data-reveal>
+        <div class="profile__mark" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><rect x="8" y="8" width="104" height="104" rx="34"/><path d="M38 62l15 15 30-34"/></svg>
+        </div>
+        <ul class="profile__list">
+          <li>現役人事責任者（中小企業）。採用、勤怠、評価まわりが担当</li>
+          <li>前職はシステムエンジニア（SE）。人事の実務と自動化の両方が分かるのが強み</li>
+          <li>対応は平日夜と週末、オンラインで全国対応</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ お問い合わせ -->
+  <section class="section section--ink" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <p class="section__no">06</p>
+        <h2 class="section__title" id="contact-title">お問い合わせ</h2>
+      </header>
+      <ul class="contacts">
+        <li data-reveal>
+          <a class="contact" href="https://coconala.com/users/6173656" target="_blank" rel="noopener">
+            <span class="contact__name">ココナラのプロフィール</span>
+            <span class="contact__desc">取引はこちらから</span>
+            <span class="contact__arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li data-reveal>
+          <a class="contact" href="https://x.com/shuto_hr" target="_blank" rel="noopener">
+            <span class="contact__name">X（@shuto_hr）のDM</span>
+            <span class="contact__desc">相談・無料診断の入口</span>
+            <span class="contact__arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p class="site-footer__brand">ジンジの自動化ラボ</p>
+    <p class="site-footer__copy"><small>&copy; ジンジの自動化ラボ</small></p>
+  </div>
+</footer>
+
+</body>
+</html>
