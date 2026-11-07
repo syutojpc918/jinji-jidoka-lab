@@ -27,6 +27,9 @@
   /* 2. ヘッダーの背景と、進め方の線をスクロールに合わせる */
   var header = document.querySelector('.site-header');
   var flow = document.querySelector('.flow');
+  var steps = flow ? flow.querySelectorAll('.step') : [];
+  var heroText = document.querySelector('[data-parallax="text"]');
+  var heroVisual = document.querySelector('[data-parallax="visual"]');
   var ticking = false;
 
   function update() {
@@ -38,7 +41,21 @@
       var r = flow.getBoundingClientRect();
       var vh = window.innerHeight;
       var p = (vh * 0.7 - r.top) / r.height;
-      flow.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+      p = Math.max(0, Math.min(1, p));
+      flow.style.setProperty('--p', p.toFixed(3));
+      // 線が届いた番号から色をつける
+      var lineY = r.top + r.height * p;
+      steps.forEach(function (st) {
+        var n = st.querySelector('.step__no').getBoundingClientRect();
+        st.classList.toggle('is-on', p > 0 && n.top + n.height / 2 <= lineY + 1);
+      });
+    }
+
+    // ヒーローだけ、ほんの少し奥行きを出す（文字と図で速度を変える）
+    if (!reduce && heroText && y < window.innerHeight * 1.2) {
+      heroText.style.transform = 'translate3d(0,' + (y * 0.12).toFixed(1) + 'px,0)';
+      heroText.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.9)).toFixed(3);
+      if (heroVisual) heroVisual.style.transform = 'translate3d(0,' + (y * -0.06).toFixed(1) + 'px,0)';
     }
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }

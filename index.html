@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#F5F1E8">
 <link rel="canonical" href="https://syutojpc918.github.io/jinji-jidoka-lab/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -24,7 +25,7 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/main.js" defer></script>
 </head>
@@ -49,20 +50,20 @@
   <!-- ① ヒーロー -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero__grid">
-      <div class="hero__text">
-        <p class="hero__name" data-reveal>ジンジの自動化ラボ</p>
+      <div class="hero__text" data-parallax="text">
+        <p class="hero__name" data-reveal><svg class="hero__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="9"/><path d="M10 16.5l4 4 8-9"/></svg>ジンジの自動化ラボ</p>
         <p class="hero__tag" data-reveal>現役人事 × GAS自動化</p>
         <h1 class="hero__title" id="hero-title" data-reveal>
-          <span>月末の勤怠集計、</span><span>その手作業を</span><span>まるごと自動化します。</span>
+          <span>月末の勤怠集計、</span><span>その手作業を</span><span>まるごと</span><span>自動化します。</span>
         </h1>
-        <p class="hero__lead" data-reveal>人事の現場で実際に作って使ってきた仕組みを、<wbr>中小企業向けに提供しています。</p>
+        <p class="hero__lead" data-reveal><span>人事の現場で</span><span>実際に作って使ってきた</span><span>仕組みを、</span><span>中小企業向けに</span><span>提供しています。</span></p>
         <div class="hero__actions" data-reveal>
           <a class="btn btn--primary" href="#service">サービスを見る</a>
           <a class="btn btn--ghost" href="#diagnosis">無料診断について</a>
         </div>
       </div>
 
-      <figure class="hero__visual" aria-hidden="true">
+      <figure class="hero__visual" aria-hidden="true" data-parallax="visual">
         <svg viewBox="0 0 440 360" class="schema">
           <!-- 手作業のシート -->
           <g class="schema__sheet">
@@ -174,7 +175,7 @@
 
       <div class="diagnosis" id="diagnosis" data-reveal>
         <p class="diagnosis__label">購入前の無料診断</p>
-        <p class="diagnosis__catch">「これ自動化できる？」の段階でOK。</p>
+        <p class="diagnosis__catch"><span>「これ自動化できる？」</span><span>の段階でOK。</span></p>
         <p class="diagnosis__body">作業の流れを送ってもらえれば、可否と工数・金額の目安を無料で返信</p>
       </div>
 
@@ -252,8 +253,8 @@
 
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
-    <p class="site-footer__brand">ジンジの自動化ラボ</p>
     <p class="site-footer__copy"><small>&copy; ジンジの自動化ラボ</small></p>
+    <a class="site-footer__top" href="#top">ページの先頭へ <span aria-hidden="true">↑</span></a>
   </div>
 </footer>
 
